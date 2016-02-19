@@ -1,0 +1,7 @@
+To convert GIF images to transparent:
+
+  giftrans -t #ffffff leftIcon.gif > leftIcon1.gif
+
+For Linux, a symbolic name can be used for the colour:
+
+  giftrans -t white leftIcon.gif > leftIcon1.gif

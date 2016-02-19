@@ -1,0 +1,24 @@
+CHANGELOG for gusto-fltdyn
+==========================
+
+2016-01-20: Renamed FineTime to TaiTime
+
+2016-01-19: Made FineTime cloneable (HCSS-20513)
+
+2016-01-18: gusto-fltdyn-2.0.3
+  - Release for export to GitHub
+
+2016-01-18: updated copyright dates
+
+2015-02-19: gusto-fltdyn-2_0_2
+  - Added method CucConverter.toMicroseconds
+  
+2015-01-23: gusto-fltdyn-2_0_1
+  - Added leap-second at 2015-07-01T00:00:00Z (HCSS-19964)
+
+2014-08-11: gusto-fltdyn-2_0_0
+  - Initial import of gusto-core from GUSTO SVN repository (version 2.0.0-SNAPSHOT)
+  - Split into 2 projects: gusto-fltdyn and gusto-gui
+  - Updated to Java-8 and JUnit-4.11
+
+Note: gusto-fltdyn and gusto-gui are a further development of the original Herschel "fltdyn" package.

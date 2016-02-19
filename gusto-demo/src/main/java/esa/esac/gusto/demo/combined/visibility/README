@@ -1,0 +1,10 @@
+  
+Example using time and sky classes to show Herschel visibility constraints
+==========================================================================
+
+The two views are linked by MVC. Moving the time slider changes both views.
+
+The MGA constraint is the constraint on the telescope (+X) axis such that
+the Sun is in the XZ plane and the MGA antenna (+Z) axis is pointing 
+within a specified angle of the ground station.
+

@@ -1,0 +1,15 @@
+CHANGELOG for gusto-gui
+=======================
+
+2016-01-19: Added default implementation of SkyDrawable.setPane()
+
+2016-01-18: Release 2.0.3 for export to GitHub
+
+2016-01-18: updated copyright dates
+
+2014-08-11: gusto-fltdyn-2_0_0
+  - Initial import of gusto-core from GUSTO SVN repository (version 2.0.0-SNAPSHOT)
+  - Split into 2 projects: gusto-fltdyn and gusto-gui
+  - Updated to Java-8 and JUnit-4.11
+
+Note: gusto-fltdyn and gusto-gui are a further development of the original Herschel "fltdyn" package.

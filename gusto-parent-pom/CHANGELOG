@@ -1,0 +1,9 @@
+CHANGELOG for gusto-parent-pom
+==============================
+
+2014-08-11: gusto-parent-pom_2_0_0
+  - Initial import from GUSTO project (version 2.0.0-SNAPSHOT)
+  - Updated pom.xml
+  - Deleted use of site
+ 
+ 

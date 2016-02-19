@@ -1,0 +1,23 @@
+Test data
+=========
+
+1. test.orb.ASCII
+   --------------
+
+   Short orbit file, covering a 3-month period, for testing orbit reader
+   and interpolator. Created from her.orb (creation date 2004-06-16T15:31:46)
+
+   3 sections, no derivatives:
+
+     START_TIME     = 2008-06-25T07:54:19.86883198            
+     STOP_TIME      = 2008-07-24T19:54:19.86883198
+
+       <gap>
+
+     START_TIME     = 2008-07-25T07:54:19.86883198
+     STOP_TIME      = 2008-08-25T07:54:19.86883198
+
+       <no gap>
+
+     START_TIME     = 2008-08-25T07:54:19.86883198
+     STOP_TIME      = 2008-09-26T19:54:19.86883198

@@ -1,0 +1,14 @@
+<!-- DTD for Herschel ground station file -->
+
+<!ELEMENT ground_stations (ground_station*)>
+
+<!ELEMENT ground_station (name, longitude, latitude, altitude)*>
+<!ATTLIST ground_station
+          id     CDATA           #REQUIRED
+>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT longitude (#PCDATA)>
+<!ELEMENT latitude (#PCDATA)>
+<!ELEMENT altitude (#PCDATA)>
+

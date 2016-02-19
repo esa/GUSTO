@@ -1,0 +1,44 @@
+Using the Fltdyn GUI time classes
+=================================
+
+The fltdyn.gui.time packages provides components for graphically displaying and selecting times.
+These may be used to build more complex components such as a schedule time-line with a time
+axis.
+
+TimeDemo0 is a simple program that displays a slider which allows a time to be selected.
+Run the demo and try the following:
+
+- Drag the cursor to change the time
+- Use the mouse wheel to zoom in and out. You can zoom in to the level of seconds.
+  Note that zooming occurs about the mouse position.
+- Press and drag the mouse to scroll the pane. The pane cannot be scrolled if it is
+  fully zoomed out.
+- Double-click the mouse to jump to a time.
+- Double right-click the mouse to zoom out fully.
+
+TimeDemo1 adds a text field to display the selected time.
+
+The TimeAxisPane class used in this demo makes use of several other classes:
+
+The BoundedTimeModel is a model for the selected time and also specifies the allowed time range.
+This range is a hard limit which may, for example, be imposed by the time range of the data.
+It should not be confused with the time range displayed by the view.
+
+The AxisPainter paints the axis with tick-marks and labels it. By default a CalendarAxisPainter
+is used which displays UTC times and dates.
+
+The BasicTimeProjection defines the mapping between times and positions on the axis. This
+changes when the view is zoomed or scrolled, or the width of the view is changed. It is
+possible to register a ChangeListener with the projection. This allows a set of time
+views to be linked together using the MVC pattern, so that they all zoom and scroll
+in step with the TimeAxisPane.
+
+TimeDemo2 adds another pane which displays a schedule with two items. So as to not over-complicate
+the example, the schedule data is created directly in the view without a separate schedule model.
+
+Try zooming and scrolling the time axis and note that the axis and schedule changes in step.
+
+
+
+
+

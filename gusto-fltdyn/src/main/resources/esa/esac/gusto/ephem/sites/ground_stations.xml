@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ground_stations SYSTEM "ground_stations.dtd">
+
+<!-- Ground station geodetic coordinates -->
+<ground_stations>
+
+  <!-- WGS-84 coordinates -->
+  <ground_station id="NNO">
+    <name>New Norcia 35m (id=74)</name>
+    <longitude>116.19150023</longitude>
+    <latitude>-31.04822561</latitude>
+    <altitude>0.252256</altitude>
+  </ground_station>
+
+  <!-- WGS-84 coordinates -->
+  <ground_station id="CEB">
+    <name>Cebreros 35m</name>
+    <longitude>355.63244934</longitude>
+    <latitude>40.45268870</latitude>
+    <altitude>0.794095</altitude>
+  </ground_station>
+
+  <!-- WGS-84 coordinates -->
+  <ground_station id="KRU">
+    <name>Kourou 15m</name>
+    <longitude>307.19533628</longitude>
+    <latitude>5.25143911</latitude>
+    <altitude>-0.014671</altitude>
+  </ground_station>
+
+  <!-- WGS-84 coordinates -->
+  <ground_station id="PER">
+    <name>Perth 15m</name>
+    <longitude>115.88516144</longitude>
+    <latitude>-31.80252200</latitude>
+    <altitude>0.022163</altitude>
+  </ground_station>
+
+  <!-- WGS-84 coordinates -->
+  <ground_station id="MAS">
+    <name>Maspalomas 15m</name>
+    <longitude>344.36619914</longitude>
+    <latitude>27.76288929</latitude>
+    <altitude>0.205118</altitude>
+  </ground_station>
+  
+  <!-- GRS-80 coordinates -->
+  <ground_station id="MLG">
+    <name>Malargüe DSA 3</name>
+    <longitude>290.60181844</longitude>
+    <latitude>-35.77597024</latitude>
+    <altitude>1.5717678</altitude>
+  </ground_station>
+  
+</ground_stations>
+

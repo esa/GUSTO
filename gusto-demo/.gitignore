@@ -1,0 +1,15 @@
+# Maven
+target/
+
+# Eclipse
+bin/
+
+# Java
+*.class
+
+# Editor backup
+*~
+\#*
+
+# OS X
+.DS_Store

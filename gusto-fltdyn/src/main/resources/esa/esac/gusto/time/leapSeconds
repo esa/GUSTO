@@ -1,0 +1,36 @@
+# Table of leap seconds, in UTC, in ascending order.
+#
+# The table starts from 1 Jan 1972 UTC, when leap seconds were first introduced,
+# at which point the value of TAI-UTC is 10. Each table entry adds one leap-second,
+# as indicated by the comment column showing TAI-UTC.
+#
+# See <http://hpiers.obspm.fr/eop-pc/earthor/utc/TAI-UTC_tab.html
+#
+# year-month
+
+1972-07    # 11
+1973-01    # 12
+1974-01    # 13
+1975-01    # 14
+1976-01    # 15
+1977-01    # 16
+1978-01    # 17
+1979-01    # 18
+1980-01    # 19
+1981-07    # 20
+1982-07    # 21
+1983-07    # 22
+1985-07    # 23
+1988-01    # 24
+1990-01    # 25
+1991-01    # 26
+1992-07    # 27
+1993-07    # 28
+1994-07    # 29
+1996-01    # 30
+1997-07    # 31
+1999-01    # 32
+2006-01    # 33
+2009-01    # 34
+2012-07    # 35
+2015-07    # 36

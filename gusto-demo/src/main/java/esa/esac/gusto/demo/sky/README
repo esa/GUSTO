@@ -1,0 +1,91 @@
+  
+Using the Fltdyn GUI sky classes
+================================
+
+SkyPane is the most important class for creating a sky display. It implements an interface
+SkyCanvas on which you can draw on the celestial sphere using vectors (Vector3). The view
+is the sky (projection, viewport, etc) is controlled by the SkyView interface.
+
+A simple way to get started is to use the framework SimpleSkyFrame. SkyDemo0 shows how
+to create a SkyPane and display it using a SimpleSkyFrame. To run the demo, type
+java demo.SkyDemo0. Explore the use of the mouse and the various menu options.
+
+The mouse supports the following:
+
+- Left button to pan the view
+- Mouse wheel to zoom the view
+- Right button press and drag to select a region and zoom
+- Right button double-click to zoom out
+
+The command key can be used with the left button as an alternative to the right
+button. This is useful on Macintosh computers that do not have the secondary click
+enabled.
+
+The View menu provides the following:
+
+- Selection of displayed coordinates (Equatorial, Ecliptic of Galactic)
+- Display of fundamental planes
+- Choice of projection
+- Hiding the graticule
+- Showing cursor coodinates in decimal or sexagesimal
+
+The File menu allows the view to be printed.
+
+
+There are various ways in which you can add your own content to the pane:
+
+1. Using inheritance to create your own sub-class of SkyPane. This overrides the
+drawContents() method. Demo1 shows a simple example of drawing a small circle of 
+radius 10 degrees at equatorial J2000 coordinates (30,40).
+
+2. Using composition to add a SkyDrawable component to the SkyCanvas and then
+implement its draw() method. Demo2 shows the same example implemented this way.
+
+3. Define shapes as classes that implement the SkyDrawable interface and then simply
+add them to the SkyCanvas. This approach is shown in Demo3.
+
+The SkyComposite class supports use of the Composite design pattern. It is a
+SkyDrawable to which other SkyDrawables can be added, including other SkyComposites.
+
+It is possible to combine approaches 2 and 3.
+
+Approaches 2 and 3 are probably the easiest for new users. Approach 1 is potentially
+more powerful as it allows access the the underlying Java Graphics object. However,
+note that drawing directly to this object bypasses the projections.
+
+
+The SimpleSkyFrame provides a basic framework with some default mouse actions,
+menus, printing support etc. It is possible to customize these to some extend as follows:
+
+- SimpleSkyFrame provides a getViewMenu() method, so that you can add additional
+items to the view menu.
+
+- You can define your own SkyMouseHandler to handle additional mouse events.
+SimpleSkyFrameprovides a getSkyMouseListener() method to get the mouse listener
+and then set your handler.
+
+- You can define your own projection classes and add them to the Projections class
+(not working).
+
+- You can add additional GUI components. SimpleSkyFrame is a JFrame with a 
+BorderLayout manager. The SkyPane is the CENTER component. So, for example,
+you could add a time pane at NORTH and a status pane at SOUTH.
+
+
+However, for more complex applications it may be desirable to implement the applications
+from scratch. This is still very straightforward using the components provided.
+
+Demo6 shows a simple application with a SkyPane, mouse support and default view menus.
+The View menu is created using the SkyMenuFactory. This factory provides other methods
+for creating individual menu items, in case you wish to customize the View menu.
+
+
+
+
+
+
+
+
+
+
+
