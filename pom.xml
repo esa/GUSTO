@@ -16,8 +16,8 @@
 	<packaging>pom</packaging>
 
         <scm>
-            <connection>scm:git:file:///Users/jonbrumfitt/git/GUSTO.git</connection>
-            <developerConnection>scm:git:file:///Users/jonbrumfitt/git/GUSTO.git</developerConnection>
+            <connection>scm:git:file:///Users/jonbrumfitt/git/GUSTO/.git</connection>
+            <developerConnection>scm:git:file:///Users/jonbrumfitt/git/GUSTO/.git</developerConnection>
             <tag>HEAD</tag>
         </scm>
 
