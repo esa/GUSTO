@@ -103,6 +103,25 @@ public class LeapSecondsTest{
         assertEquals(LeapSeconds.leapSeconds(t2015),           36); // 00:00:00Z
         assertEquals(LeapSeconds.leapSeconds(t2015  + 500000), 36); // 00:00:00.5Z
     }
+    
+    /**
+     * Test the leap-second added at 2017-01-01.
+     */
+    @Test
+    public void testLeapSecond2017() {
+        // Test at a leap second
+        TaiTime f2017 = UTC.parse("2017-01-01T00:00:00Z");
+        long t2017 = f2017.microsecondsSince1958();
+
+        // Times up to the end of the leap second
+        assertEquals(LeapSeconds.leapSeconds(t2017 - 1000000), 36); // 23:59:60Z
+        assertEquals(LeapSeconds.leapSeconds(t2017 -  500000), 36); // 23:59:60.5Z
+        assertEquals(LeapSeconds.leapSeconds(t2017 -       1), 36); // 23:59:60.999999Z
+
+        // Times from the leap second onwards
+        assertEquals(LeapSeconds.leapSeconds(t2017),           37); // 00:00:00Z
+        assertEquals(LeapSeconds.leapSeconds(t2017  + 500000), 37); // 00:00:00.5Z
+    } 
 
     /**
      * Test the <tt>utcToTai</tt> method.

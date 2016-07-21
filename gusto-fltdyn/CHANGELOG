@@ -1,6 +1,11 @@
 CHANGELOG for gusto-fltdyn
 ==========================
 
+2016-07-21: gusto-fltdyn-2.0.5
+  - Added leap-second for 2017-01-01
+
+2016-03-10: gusto-fltdyn-2.0.4
+
 2016-01-20: Renamed FineTime to TaiTime
 
 2016-01-19: Made FineTime cloneable (HCSS-20513)
