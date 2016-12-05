@@ -30,5 +30,7 @@ If time permits, a goal is to enhance the library to support newer versions of s
 
 A runnable JAR will be added to simplify running of the demo programs.
 
-![Screen shot of Hipparcosone one demo apps](screenshot.png)
+Screenshot of one of the demo apps:
+
+![screenshot](screenshot.png)
 
