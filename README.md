@@ -20,12 +20,15 @@ GUSTO requires Java 1.8. It can be built using Maven as follows:
 
 This creates the Maven modules `gusto-fltdyn`, `gusto-gui`, `gusto-demo` and `gusto-parent-pom`.
 
+### Wish list
+
+If time permits, a goal is to enhance the library to support newer versions of standards and to remove a few remaining Herschel-specific assumptions.
+
 ### Running the demos
 
 *To be written*
 
 A runnable JAR will be added to simplify running of the demo programs.
 
-### Wish list
+![Screen shot of Hipparcosone one demo apps](screenshot.png)
 
-If time permits, a goal would be to enhance the library to support newer versions of standards and to remove a few remaining Herschel-specific assumptions.
