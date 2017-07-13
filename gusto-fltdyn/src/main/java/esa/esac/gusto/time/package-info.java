@@ -280,7 +280,7 @@ represent time internally, and use the <span
  style="font-family: monospace;">SimpleTimeFormat</span> class to input
 and output times. Where it is necessary to interface to existing Java
 code that makes use of the <span style="font-family: monospace;">Date</span>
-class, the class <span style="font-family: monospace;">DateConverter</span>
+class, the class <span style="font-family: monospace;">UnixTime</span>
 is provided to convert between <span style="font-family: monospace;">Date</span>
 and <span style="font-family: monospace;">TaiTime</span>, or vice
 versa. However, it should be noted that conversion is not exact at it <span

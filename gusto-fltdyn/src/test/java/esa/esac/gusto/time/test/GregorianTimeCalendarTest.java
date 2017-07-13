@@ -20,7 +20,7 @@
 package esa.esac.gusto.time.test;
 
 import static org.junit.Assert.assertEquals;
-import esa.esac.gusto.time.DateConverter;
+import esa.esac.gusto.time.UnixTime;
 import esa.esac.gusto.time.TaiTime;
 import esa.esac.gusto.time.GregorianTimeCalendar;
 import esa.esac.gusto.time.SimpleTimeFormat;
@@ -42,13 +42,6 @@ import org.junit.Test;
 public class GregorianTimeCalendarTest {
 
     static final double EPSILON = 1 / 86400d / 1000000d; // 1 microsecond error in a day
-
-    //    /**
-    //     * Assert that two TaiTimes are equal to a specified accuracy.
-    //     */
-    //    private void assertEquals(TaiTime ft1, TaiTime ft2, long microseconds) {
-    //	assertTrue(Math.abs(ft2.subtract(ft1)) <= microseconds);
-    //    }
 
     /**
      * Assert that two int[] arrays are equal.
@@ -74,7 +67,7 @@ public class GregorianTimeCalendarTest {
 	// Create some times for the tests.
 	String s = "1992-07-01T00:00:00.000Z";
 	Date d = formatter.parse(s, new ParsePosition(0));
-	TaiTime f000 = DateConverter.dateToTaiTime(d);
+	TaiTime f000 = UnixTime.dateToTaiTime(d);
 	TaiTime f590 = f000.addMicroseconds(-2000000);
 	TaiTime f595 = f000.addMicroseconds(-1500000);
 	TaiTime f600 = f000.addMicroseconds(-1000000);

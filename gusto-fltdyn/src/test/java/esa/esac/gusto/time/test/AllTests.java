@@ -30,7 +30,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
     CucConverterTest.class,
-    DateConverterTest.class,
+    UnixTimeTest.class,
     EpochTest.class,
     TaiTimeTest.class,
     GregorianTimeCalendarTest.class,

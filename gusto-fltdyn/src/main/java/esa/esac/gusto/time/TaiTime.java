@@ -73,20 +73,20 @@ public final class TaiTime implements Serializable, Cloneable, Comparable<TaiTim
      * Create a TaiTime from a Java Date.<p>
      *
      * This is a convenience method which is equivalent to using the
-     * DateConverter class.<p>
+     * UnixTime class.<p>
      *
      * @param date  The Date to be converted
      * @throws IllegalArgumentException if 'date' is before 1 Jan 1972 UTC.
      */
     public TaiTime(Date date) {
-	_time = DateConverter.dateToTaiTime(date)._time;
+	_time = UnixTime.dateToTaiTime(date)._time;
     }
 
     /**
      * Return this time as a Java Date.<p>
      *
      * This is a convenience method which is equivalent to using the
-     * DateConverter class.<p>
+     * UnixTime class.<p>
      *
      * Any time within a leap-second is aliased onto the start of the next second
      * (i.e. midnight). Consequently, any time within a leap second will treated
@@ -96,7 +96,7 @@ public final class TaiTime implements Serializable, Cloneable, Comparable<TaiTim
      * than rounded.<p>
      */
     public Date toDate() {
-	return DateConverter.TaiTimeToDate(this);
+	return UnixTime.TaiTimeToDate(this);
     }
 
     /**

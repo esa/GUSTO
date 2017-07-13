@@ -117,7 +117,7 @@ public class MjdTimeFormat implements TimeFormat {
 	
 	// Insert leap seconds for UTC
 	if(_timeScale.getName().equals("UTC")) {
-	    tai = LeapSeconds.insertLeapSeconds(tai - T1970_1958);
+	    tai = LeapSeconds.unixTimeToTai(tai - T1970_1958);
 	}
 	return new TaiTime(tai);
     }

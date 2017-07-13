@@ -21,7 +21,7 @@ package esa.esac.gusto.time.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import esa.esac.gusto.time.DateConverter;
+import esa.esac.gusto.time.UnixTime;
 import esa.esac.gusto.time.TaiTime;
 import esa.esac.gusto.time.SimpleTimeFormat;
 import esa.esac.gusto.time.TimeFormat;
@@ -69,7 +69,7 @@ public class SimpleTimeFormatTest {
 
     /**
      * Check that CcsdsATimeFormat gives same result as DateFormat
-     * plus DateConverter at non-leap-seconds.
+     * plus UnixTime at non-leap-seconds.
      */
     @Test
     public void testAgainstDateFormat() {
@@ -81,7 +81,7 @@ public class SimpleTimeFormatTest {
 	Date d59 = dateFormatter.parse("1993-06-30T23:59:59Z", new ParsePosition(0));
 
 	TimeFormat timeFormatter = new SimpleTimeFormat(TimeScale.UTC);
-	TaiTime ft1 = DateConverter.dateToTaiTime(d59);
+	TaiTime ft1 = UnixTime.dateToTaiTime(d59);
 	TaiTime ft2 = timeFormatter.parse("1993-06-30T23:59:59Z");
 	assertTrue(ft1.equals(ft2));
     }

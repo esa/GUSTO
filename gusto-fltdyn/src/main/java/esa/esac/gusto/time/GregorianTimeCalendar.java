@@ -190,7 +190,7 @@ public class GregorianTimeCalendar {
 
 	long scale;
 	if(_enableLeapSeconds) {
-	    scale = LeapSeconds.insertLeapSeconds(whole * 1000000 + _microsecond);
+	    scale = LeapSeconds.unixTimeToTai(whole * 1000000 + _microsecond);
 	} else {
 	    scale = (whole * 1000 - D58) * 1000 + _microsecond;
 	}

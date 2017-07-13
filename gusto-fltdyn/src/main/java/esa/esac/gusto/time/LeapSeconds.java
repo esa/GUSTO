@@ -164,7 +164,7 @@ public class LeapSeconds {
      * Check that time is in valid range for leap-second calculation.
      *
      * @param tai Microseconds since TAI epoch
-     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC.
+     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC
      */
     private static void checkTai(long tai) {
 	if(tai < UTC_72) {
@@ -179,7 +179,7 @@ public class LeapSeconds {
      *
      * @param tai Microseconds since TAI epoch
      * @return true if the time is within a leap-second
-     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC.
+     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC
      */
     public static boolean isLeapSecond(long tai) {
 	checkTai(tai);
@@ -204,7 +204,7 @@ public class LeapSeconds {
      *
      * @param tai Microseconds since TAI epoch
      * @return TAI - UTC seconds
-     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC.
+     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC
      */
     public static int leapSeconds(long tai) {
 	checkTai(tai);
@@ -218,19 +218,28 @@ public class LeapSeconds {
     }
 
     /**
-     * Subtract the leap-seconds from a TAI time and convert epoch to 1970.<p>
-     *
-     * All times within a leap-second are mapped onto the start of the next
-     * second. i.e. 23:59:60.123 -> 00:00:00. Hence compressLeapSeconds is
-     * a many-to-one function.<p>
-     *
+     * Convert TAI microseconds to UNIX time in microseconds.<p>
+     * 
+     * UNIX time has the epoch 1970-01-01:00:00:00 UTC and omits leap seconds.
+     * 
+     * If the parameter <tt>freeze</tt> is false, the UNIX time jumps backwards
+     * by a second at the end of a leap second. Hence, two TAI times can map onto
+     * the same UNIX time. This follows the POSIX time / UNIX time convention.<p>
+     * 
+     * If the parameter <tt>freeze</tt> is true, all TAI times within the leap 
+     * second are mapped onto the start of the next second. Consequently, the
+     * UNIX time is frozen for the duration of the leap second. This can be useful
+     * if it is important that there are no backward jumps but repeated times
+     * are allowed.<p>
+     * 
      * Does not support times before 1 Jan 1972 UTC.
      *
      * @param tai Microseconds since TAI epoch
-     * @return Microseconds since 1970, ignoring leap-seconds
-     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC.
+     * @param freeze False for POSIX convention, true to freeze time in leap-second
+     * @return Microseconds since 1970 omitting leap-seconds
+     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC
      */
-    static long compressLeapSeconds(long tai) {
+    static long taiToUnixTime(long tai, boolean freeze) {
 	checkTai(tai);
 
 	long taiSeconds = tai / 1000000; // Truncate to start of second
@@ -244,86 +253,37 @@ public class LeapSeconds {
 	    }
 	    i--;
 	}
-	// We subtract one more leap-second when we reach the end of
-	// the leap second, whereas during the leap-second we use the
-	// START of the leap second as the result.
-
-	if(isLeap) {
+	if(isLeap && freeze) {
 	    tai = taiSeconds * 1000000;
 	}
 	return tai + D58 * 1000 - (LEAP_1972 + i) * 1000000L;
     }
 
     /**
-     * Insert leap seconds and change epoch to 1958 TAI.<p>
+     * Convert UNIX time to TAI microseconds.<p>
      *
-     * Leap seconds are not represented in the utc representation
-     * and hence the function is injective.<p>
+     * Leap seconds are aliased onto the next second. Consequently, conversions
+     * never result in a TAI value falling within a leap second.<p>
      *
      * Does not support times before 1 Jan 1972 UTC.
      *
-     * @param utc  Microseconds since 1970 ignoring leap seconds
+     * @param unixTime  Microseconds since 1970 omitting leap seconds
      * @return TAI microseconds since 1958
-     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC.
+     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC
      */
-    static long insertLeapSeconds(long utc) {
-	if(utc < D72 * 1000) {
+     static long unixTimeToTai(long unixTime) {
+	if(unixTime < D72 * 1000) {
 	    throw new IllegalArgumentException("Cannot handle time before 1972 UTC");
 	}
 
 	// Scan table backwards as times near the present are more likely.
-	long tai = (utc - D58 * 1000) + 1000000 * (LEAP_1972 + _leap.length);
+	long tai = (unixTime - D58 * 1000) + 1000000 * (LEAP_1972 + _leap.length);
 	for(int i=_leap.length; i>0; i--) {
 	    if(tai < _leap[i-1]) {
 		tai -= 1000000;
 	    }
 	}
 	return tai;
-    }
-
-    /**
-     * Convert a UTC time to TAI, both with epoch 1 Jan 1958 TAI.<p>
-     *
-     * <B>WARNING:</B> This function should only be used for compatibility
-     * with legacy applications that represent UTC as an elapsed time omitting
-     * leap-seconds.<p>
-     *
-     * Does not support times before 1 Jan 1972 UTC.
-     *
-     * @param  utc  Microseconds since 1970 ignoring leap seconds
-     * @return TAI microseconds since 1958
-     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC.
-     */
-    public static long utcToTai(long utc) {
-	if(utc < D72_58) {
-	    throw new IllegalArgumentException("Cannot handle time before 1972 UTC");
-	}
-
-	// Scan table backwards as times near the present are more likely.
-	long tai = utc + 1000000 * (LEAP_1972 + _leap.length);
-	for(int i=_leap.length; i>0; i--) {
-	    if(tai < _leap[i-1]) {
-		tai -= 1000000;
-	    }
-	}
-	return tai;
-    }
-
-    /**
-     * Convert a TAI time to UTC, both with epoch 1 Jan 1958 TAI.<p>
-     *
-     * <B>WARNING:</B> This function should only be used for compatibility
-     * with legacy applications that represent UTC as an elapsed time omitting
-     * leap-seconds.<p>
-     *
-     * Does not support times before 1 Jan 1972 UTC.
-     *
-     * @param  tai Microseconds since 1970 
-     * @return UTC microseconds since 1958 ignoring leap seconds
-     * @throws IllegalArgumentException if time is before 1 Jan 1972 UTC.
-     */
-    public static long taiToUtc(long tai) {
-	return compressLeapSeconds(tai) - D58 * 1000;
     }
 }
 
